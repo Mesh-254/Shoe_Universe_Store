@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="colorlib-loader"></div>
+<div id="page">
+    <div class="colorlib-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="intro">Get your favourite and Quality footwear from World's best Online Shoe Store .
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                    <h2>{{categoryName.name}} Products </h2>
+                </div>
+            </div>
+            <div class="display">
+                <div class="row row-pb-md">
+                    <div class="mw-100"></div>
+                    {% for data in items %}
+                    <div class="col-lg-3 mb-4 text-center">
+                        <div class="product-entry border">
+                            <a href="/static/images/?image={{data.image}}" class="prod-img">
+                                <img src={{url_for('static' , filename='images/' + data.image)}}
+                                     class="img-fluid" alt="IMAGE">
+                            </a>
+                            <div class="desc">
+                                <h2><a href="#">{{data.name}}</a></h2>
+                                <span class="price">${{data.price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p><a href="/" class="btn btn-primary btn-lg">Shop All Products</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

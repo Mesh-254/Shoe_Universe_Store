@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="colorlib-loader"></div>
+
+<div id="page">
+    <aside id="colorlib-hero">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url(/static/images/img_bg_1.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <div class="desc">
+                                        <h1 class="head-1">Men's</h1>
+                                        <h2 class="head-2">Shoes</h2>
+                                        <h2 class="head-3">Collection</h2>
+                                        <p class="category"><span>New trending shoes!</span></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-image: url(/static/images/img_bg_2.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <div class="desc">
+                                        <h1 class="head-1">Big</h1>
+                                        <h2 class="head-2">Sale</h2>
+                                        <h2 class="head-3"><strong class="font-weight-bold">20%</strong> Off</h2>
+                                        <p class="category"><span>Huge sale sandals</span></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-image: url(/static/images/img_bg_3.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <div class="desc">
+                                        <h1 class="head-1">New</h1>
+                                        <h2 class="head-2">Arrivals</h2>
+                                        <h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off
+                                        </h2>
+                                        <p class="category"><span>New Fashion shoes for men</span></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="colorlib-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="intro">Get your favourite and Quality footwear from World's best Online Shoe Store .
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-product">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <div class="featured">
+                        <a href="men.html" class="featured-img"
+                           style="background-image: url(/static/images/men.jpg);"></a>
+                        <div class="desc">
+                            <h2><a href="men.html">Shop Men's Collection</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <div class="featured">
+                        <a href="women.html" class="featured-img"
+                           style="background-image: url(/static/images/women.jpg);"></a>
+                        <div class="desc">
+                            <h2><a href="women.html">Shop Women's Collection</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading" id = "shopall">
+                    <h2 >Shop All Products</h2>
+                </div>
+            </div>
+            <div class="display" >
+                <div class="row row-pb-md">
+                    <div class="mw-100"></div>
+                    {% for data in items.items %}
+                    <div class="col-lg-3 mb-4 text-center">
+                        <div class="product-entry border">
+                            <a href="{{ url_for('category.itemDescription', item_id= data.id) }}" class="prod-img">
+                                <img src={{url_for('static' , filename='images/' + data.image)}}
+                                     class="img-fluid" alt="IMAGE">
+                            </a>
+                            <div class="desc">
+                                <h2>
+                                    <a href="{{ url_for('category.itemDescription', item_id= data.id) }}">{{data.name}}</a>
+                                </h2>
+                                <span class="price">${{data.price}}</span>
+                            </div>
+                            <div class="cart mt-4 align-items-center">
+                                {% if current_user.is_authenticated%}
+                                <button class="btn btn-outline-dark text-uppercase mr-2 px-4">
+
+                                    <a href="{{url_for('cart.addToCart', item_id=data.id, user_id=current_user.id) }}">
+                                    Add to cart
+                                    </a>
+
+                                    </button>
+                                {% endif %}
+                                <i class="fa fa-heart text-muted"></i>
+                                <i class="fa fa-share-alt text-muted"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- pagination links-->
+            <div class="text-center">
+                <a href="{{ url_for('index', page=items.prev_num) }}"
+                   class="btn btn-outline-dark
+       {% if items.page == 1 %}disabled{% endif %}">
+                    &laquo;
+                </a>
+                <!-- Loop through the number of pages to display a link for each-->
+                {% for page_num in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num %}
+                <!-- Check for the active page and set the link to "Active"-->
+                {% if items.page == page_num %}
+                <a href="{{ url_for('index', page=page_num) }}"
+                   class="btn btn-dark">
+                    {{ page_num }}
+                </a>
+                {% else %}
+                <a href="{{ url_for('index', page=page_num) }}"
+                   class="btn btn-outline-dark">
+                    {{ page_num }}
+                </a>
+                {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+                {% endfor %}
+                <a href="{{ url_for('index', page=items.next_num) }}"
+                   class="btn btn-outline-dark
+       {% if items.page == items.pages %}disabled{% endif %}">
+                    &raquo;
+                </a>
+            </div>
+            <b><p class="text-right mt-4">
+                Showing page {{ items.page }} of {{ items.pages }}
+            </p>
+            </b>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p><a href="/" class="btn btn-primary btn-lg">Shop All Products</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

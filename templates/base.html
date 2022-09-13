@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>{%block title%}Home{%endblock%}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{{url_for('static', filename ='css/animate.css')}}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/icomoon.css')}}">
+    <!-- Ion Icon Fonts-->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/ionicons.min.css') }}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.min.css') }}">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{{url_for('static', filename ='css/magnific-popup.css') }}">
+
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/flexslider.css') }}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/owl.theme.default.min.css') }}">
+
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap-datepicker.css') }}">
+    <!-- Flaticons  -->
+    <link rel="stylesheet" href="{{url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="colorlib-loader"></div>
+
+<div id="page">
+    <nav class="colorlib-nav" role="navigation">
+        <div class="top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 col-md-9">
+                        <div id="colorlib-logo"><a href="/">World's Finest Footwear</a></div>
+                    </div>
+                    <div class="col-sm-5 col-md-3">
+                        <form action="#" class="search-wrap">
+                            <div class="form-group">
+                                <input type="search" class="form-control search" placeholder="Search">
+                                <button class="btn btn-primary submit-search text-center" type="submit"><i
+                                        class="icon-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-left menu-1">
+                        <ul>
+                            {% if current_user.is_authenticated and current_user.usertype_id ==1 %}
+                            <li><a href='/add'>Add Items</a></li>
+                            <li><a href='/category'>Add Category</a></li>
+                            {% endif %}
+
+                            {% if current_user.is_authenticated%}
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/men">Men</a></li>
+                            <li><a href="/women">Women</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart [0]</a>
+                            </li>
+
+                            <li class="has-dropdown" class ='active'>
+									<a href="/account/profile">Hello,{{current_user.username}}</a>
+									<ul class="dropdown">
+                                       <li><a href="/account/profile">Your profile</a></li>
+                                    <hr>
+                                    <li> <a href="product-detail.html">Your orders</a></li>
+                                    <li> <a href="/checkout">check out</a></li>
+                                     <li><a href="add-to-wishlist.html">Wishlist</a></li>
+
+                                    <li> <a href="/logout">Sign Out</a></li>
+									</ul>
+								</li>
+                            {% else %}
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/login" , class="btn" , align="right">Login</a></li>
+                            <li><a href="/men">Men</a></li>
+                            <li><a href="/women">Women</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart [{{count}}]</a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sale">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-2 text-center">
+                        <div class="row">
+                            <div class="owl-carousel2">
+                                <div class="item">
+                                    <div class="col">
+                                        <h3><a href="#"> 20% off on (Almost) Every Product! Use Code: <b>Summer
+                                            Sale</b></a></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col">
+                                        <h3><a href="#">Our biggest offer 30% discount off all summer shoes</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="flash-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+    <div class="colorlib-partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                    <h2>Trusted Partners</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col partner-col text-center">
+                    <img src="static/images/brand-1.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="static/images/brand-2.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="static/images/brand-3.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="static/images/brand-4.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="static/images/brand-5.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="colorlib-footer" role="contentinfo">
+        <div class="container">
+            <div class="row row-pb-md">
+                <div class="col footer-col colorlib-widget">
+                    <h4>About Footwear</h4>
+                    <p>Get Quality footwear that will get you positive vibes vibrations</p>
+                    <p>
+                    <ul class="colorlib-social-icons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="col footer-col colorlib-widget">
+                    <h4>Information</h4>
+                    <p>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="col footer-col">
+                    <h4>Contact Information</h4>
+                    <ul class="colorlib-footer-links">
+                        <li>21th Waiyaki way Street, <br> Nairobi</li>
+                        <li><a href="tel://1234567920">+25470000000</a></li>
+                        <li><a href="mailto:info@gmail.com">info@yoursite.com</a></li>
+                        <li><a href="#">World's Best Online Store.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p>
+								<span>Copyright &copy;
+									<script>document.write(new Date().getFullYear());</script> All rights reserved
+								</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+<!-- popper -->
+<script src="{{url_for('static', filename ='js/popper.min.js') }}"></script>
+<!-- bootstrap 4.1 -->
+<script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+<!-- jQuery easing -->
+<script src="{{ url_for('static', filename = 'js/jquery.easing.1.3.js') }}"></script>
+<!-- Waypoints -->
+<script src="{{ url_for('static', filename = 'js/jquery.waypoints.min.js') }}"></script>
+<!-- Flexslider -->
+<script src="{{ url_for('static', filename ='js/jquery.flexslider-min.js') }}"></script>
+<!-- Owl carousel -->
+<script src="{{ url_for('static', filename = 'js/owl.carousel.min.js') }}"></script>
+<!-- Magnific Popup -->
+<script src="{{ url_for('static', filename = 'js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/magnific-popup-options.js') }}"></script>
+<!-- Date Picker -->
+<script src="{{ url_for('static', filename ='js/bootstrap-datepicker.js') }}"></script>
+<!-- Stellar Parallax -->
+<script src="{{url_for('static', filename = 'js/jquery.stellar.min.js') }}"></script>
+<!-- Main -->
+<script src="{{ url_for('static', filename ='js/main.js') }}"></script>
+
+</body>
+
+</html>

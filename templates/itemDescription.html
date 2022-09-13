@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic,700italic,800italic,400italic,300italic"
+          rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{{url_for('static', filename ='css/animate.css')}}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/icomoon.css')}}">
+    <!-- Ion Icon Fonts-->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/ionicons.min.css') }}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.min.css') }}">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{{url_for('static', filename ='css/magnific-popup.css') }}">
+
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/flexslider.css') }}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/owl.theme.default.min.css') }}">
+
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap-datepicker.css') }}">
+    <!-- Flaticons  -->
+    <link rel="stylesheet" href="{{url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css') }}">
+
+</head>
+
+<body class="bg-gradient-primary">
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4">  </div>
+                            <div class="thumbnail text-center">
+                                <img src={{url_for('static' , filename='images/' + itemData.image )}} class="img-fluid" alt="IMAGE"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand" ><b>World's Best Footwear</b></span>
+                                <div class="mt-4 mb-3">
+                                    <span class="text-uppercase text-muted brand">
+                                    <h5 class="text-uppercase">{{itemData.name}}</h5>
+                                </span>
+                                    </div>
+
+                            </div>
+                            <p class="about">Shop from a wide range of footwear from World's best Footwear online store. Perfect for your everyday use, you could choose your most satisfying footwear to complete your look.</p>
+
+                            <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+<!-- popper -->
+<script src="{{url_for('static', filename ='js/popper.min.js') }}"></script>
+<!-- bootstrap 4.1 -->
+<script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+<!-- jQuery easing -->
+<script src="{{ url_for('static', filename = 'js/jquery.easing.1.3.js') }}"></script>
+<!-- Waypoints -->
+<script src="{{ url_for('static', filename = 'js/jquery.waypoints.min.js') }}"></script>
+<!-- Flexslider -->
+<script src="{{ url_for('static', filename ='js/jquery.flexslider-min.js') }}"></script>
+<!-- Owl carousel -->
+<script src="{{ url_for('static', filename = 'js/owl.carousel.min.js') }}"></script>
+<!-- Magnific Popup -->
+<script src="{{ url_for('static', filename = 'js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/magnific-popup-options.js') }}"></script>
+<!-- Date Picker -->
+<script src="{{ url_for('static', filename ='js/bootstrap-datepicker.js') }}"></script>
+<!-- Stellar Parallax -->
+<script src="{{url_for('static', filename = 'js/jquery.stellar.min.js') }}"></script>
+<!-- Main -->
+<script src="{{ url_for('static', filename ='js/main.js') }}"></script>
+
+</body>
+
+</html>
