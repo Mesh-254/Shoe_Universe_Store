@@ -140,5 +140,17 @@ def add_item():
             return render_template('add.html', categories=categories)
 
 
+@app.route('/remove/<int:item_id>')
+@login_required
+def removeItem(item_id):
+    """Delete an item from the web app"""
+    item = Item.query.filter(Item.id == item_id).first()
+    if item:
+        db.session.delete(item)
+        db.session.commit()
+        flash('Item deleted successfully.', 'success')
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

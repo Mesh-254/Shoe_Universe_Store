@@ -3,6 +3,7 @@ from crypt import methods
 
 from flask import *
 from flask_login import login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from models.user import User
 from models.database import db
@@ -41,6 +42,7 @@ def account_profile_update():
 
 
 @profile.route('/account/profile/change', methods=['GET', 'POST'])
+@login_required
 def change_p():
     return render_template('changepassword.html')
 
@@ -53,19 +55,20 @@ def change_password():
         oldpassword = request.form.get('oldpassword')
         newpassword = request.form.get('newpassword')
 
-        password = User.query.get('password').filter_by(username=current_user.username).first()
-        if password == oldpassword:
-            try:
-                password = User(password=newpassword)
-                flash('Password changed successfully.', 'success')
-            except:
-                flash('Failed to change password', 'danger')
-            return redirect(url_for('/'))
+        user = User.query.filter(User.id == current_user.id).first()
+        if check_password_hash(user.password, oldpassword):
+            use = User(password=generate_password_hash(newpassword, method='sha256'), username = current_user.username, email = current_user.email)
+            db.session.merge(use)
+            db.session.commit()
+            flash('Password changed successfully.', 'success')
+            return redirect(url_for('auth.login'))
         elif oldpassword == newpassword:
             flash('New password should be different from old password', 'danger')
+            return redirect(url_for('profile.change_p'))
         else:
             flash('wrong password', 'danger')
-        return redirect(url_for('profile.change_p'))
+            return redirect(url_for('profile.change_p'))
     else:
-        return 'Something went wrong'
         flash('Something went wrong', 'danger')
+        return 'Something went wrong'
+

@@ -18,7 +18,8 @@
                                         <h2 class="head-2">Shoes</h2>
                                         <h2 class="head-3">Collection</h2>
                                         <p class="category"><span>New trending shoes!</span></p>
-                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +37,8 @@
                                         <h2 class="head-2">Sale</h2>
                                         <h2 class="head-3"><strong class="font-weight-bold">20%</strong> Off</h2>
                                         <p class="category"><span>Huge sale sandals</span></p>
-                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +57,8 @@
                                         <h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off
                                         </h2>
                                         <p class="category"><span>New Fashion shoes for men</span></p>
-                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a></p>
+                                        <p><a href="#shopall" class="btn btn-primary smoothScroll">Shop Collection</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -102,11 +105,11 @@
     <div class="colorlib-product">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading" id = "shopall">
-                    <h2 >Shop All Products</h2>
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading" id="shopall">
+                    <h2>Shop All Products</h2>
                 </div>
             </div>
-            <div class="display" >
+            <div class="display">
                 <div class="row row-pb-md">
                     <div class="mw-100"></div>
                     {% for data in items.items %}
@@ -122,15 +125,25 @@
                                 </h2>
                                 <span class="price">${{data.price}}</span>
                             </div>
-                            <div class="cart mt-4 align-items-center">
+                            <div class="cart mt-4 align-items-left">
                                 {% if current_user.is_authenticated%}
-                                <button class="btn btn-outline-dark text-uppercase mr-2 px-4">
+                                <button class="btn btn-outline-secondary mr-2 px-4 align-content-lg-start">
 
                                     <a href="{{url_for('cart.addToCart', item_id=data.id, user_id=current_user.id) }}">
-                                    Add to cart
+                                        Add to cart
                                     </a>
 
-                                    </button>
+                                </button>
+                                {% endif %}
+                                {% if current_user.is_authenticated and current_user.usertype_id ==1 %}
+
+                                <button class="btn btn-btn-primary btn-outline-danger  mr-2 px-4 align-content-lg-end">
+
+                                    <a href="{{url_for('removeItem', item_id = data.id)}}">
+                                        Delete
+                                    </a>
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
                                 {% endif %}
                                 <i class="fa fa-heart text-muted"></i>
                                 <i class="fa fa-share-alt text-muted"></i>

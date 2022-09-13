@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>profile</title>
@@ -44,16 +44,21 @@
 <div id="profile-container">
     <h3 class="text-center text-white pt-5">profile</h3>
     <div class="display">
-        <ul class="text-capitalize text-center text-black-50">
+        <div class="row">
+            <div class="col-md-6">
+                <h6 style="font-weight: bold">Username:</h6>
+                <h6 style="font-weight: bold">Email:</h6>
+                <h6 style="font-weight: bold">Update Profile:</h6>
+                <h6 style="font-weight: bold">Update Password:</h6>
+            </div>
+            <div class="col-md-6">
+                <h6>{{ current_user.username }}</h6>
+                <h6>{{ current_user.email }}</h6>
+                <h6> <button class = "btn btn-outline-success"><a href="/account/profile/edit">Edit Your Profile</a></button></h6>
+                <h6><button class = "btn btn-outline-success"><a href="/account/profile/change">Change password</a></button></h6>
+            </div>
+        </div>
 
-       <div>
-           <b> <li><a href="/account/profile/edit">Edit Your Profile</a></li></b>
-       </div>
-         <div >
-            <b><li><a href="/account/profile/change">Change password</a></li></b>
-         </div>
-
-    </ul>
     </div>
 
 </div>

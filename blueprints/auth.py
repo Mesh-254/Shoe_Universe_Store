@@ -6,10 +6,7 @@ from random_password import random_password
 from models.user import User
 from werkzeug.security import check_password_hash, generate_password_hash
 from models.database import db
-# from utils.mail import mail
 from flask_mail import Message
-
-# from utils.randomPassword import random_password
 
 auth = Blueprint('auth', __name__)
 
