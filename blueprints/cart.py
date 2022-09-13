@@ -27,14 +27,16 @@ def addToCart(item_id, user_id):
 @cart.route('/cart', methods=['GET', 'POST'])
 @login_required
 def to_cart():
-    """Add a new item to the cart"""
-    itemData = Item.query.filter(Item.id == CartItem.item_id).all()
+    """display items in the cart"""
+    itemData = Item.query.filter(Item.id == CartItem.item_id and current_user.id == CartItem.user_id).all()
+    count = CartItem.query.filter(Item.id == CartItem.item_id and current_user.id == CartItem.user_id).count()
     subtotal = 0
     for item in itemData:
         subtotal += item.price
-
-    return render_template('cart.html', itemData=itemData, subtotal=subtotal)
-
+    if count == 0:
+        flash('No cart items available to purchase.', 'danger')
+        return redirect(url_for('index'))
+    return render_template('cart.html', itemData=itemData, subtotal=subtotal, count=count)
 
 @cart.route('/removeFromCart')
 def removeFromCart():

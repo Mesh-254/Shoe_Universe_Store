@@ -84,9 +84,7 @@ def getlogindetails():
 @app.route('/base')
 def base():
     username = User.query.get('username')
-    count = CartItem.query.get('item_id').filter(CartItem.user_id == current_user.id).count()
-    print(count)
-    return render_template('base.html', username=username, count=count)
+    return render_template('base.html', username=username)
 
 
 @app.route('/')
