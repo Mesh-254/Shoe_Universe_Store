@@ -137,22 +137,23 @@
 
 					<div class="col-lg-4">
 						<div class="row">
+							{%for data in itemData%}
 							<div class="col-md-12">
 								<div class="cart-detail">
 									<h2>Cart Total</h2>
 									<ul>
 										<li>
-											<span>Subtotal</span> <span>$100.00</span>
+											<span>Subtotal</span> <span>${{data.price}}</span>
 											<ul>
-												<li><span>1 x Product Name</span> <span>$99.00</span></li>
-												<li><span>1 x Product Name</span> <span>$78.00</span></li>
+												<li><span>1 x Product Name</span> <span>{{data.name}}</span></li>
 											</ul>
 										</li>
 										<li><span>Shipping</span> <span>$0.00</span></li>
-										<li><span>Order Total</span> <span>$180.00</span></li>
+										<li><span>Order Total</span> <span>${{subtotal}}</span></li>
 									</ul>
 								</div>
 						   </div>
+							{% endfor %}
 
 						   <div class="w-100"></div>
 

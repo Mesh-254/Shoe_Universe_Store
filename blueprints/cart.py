@@ -38,6 +38,7 @@ def to_cart():
         return redirect(url_for('index'))
     return render_template('cart.html', itemData=itemData, subtotal=subtotal, count=count)
 
+
 @cart.route('/removeFromCart')
 def removeFromCart():
     """Route to  remove an item from the cart."""

@@ -71,7 +71,7 @@ def load_user(user_id):
 #
 def getlogindetails():
     """Returns a list of user information"""
-    email = User.query.get('email').first()
+    email = User.query.get('email')
     if email not in session:
         loggedIn = False
         username = ''
@@ -86,7 +86,9 @@ def getlogindetails():
 @app.route('/base')
 def base():
     username = User.query.get('username')
-    return render_template('base.html', username=username)
+    if current_user.is_authenticated:
+        count = CartItem.query.filter(Item.id == CartItem.item_id and current_user.id == CartItem.user_id).count()
+    return render_template('base.html', username=username, count=count)
 
 
 @app.route('/')

@@ -14,8 +14,8 @@
 								<h3><a href="/checkout">checkout</a></h3>
 							</div>
 							<div class="process text-center">
-								<p><span><a href="/ordercomplete">03</a></span></p>
-								<h3><a href="/ordercomplete">Order Complete</a></h3>
+								<p><span><a href="{{url_for('order.ordercomplete')}}">03</a></span></p>
+								<h3><a href="{{url_for('order.ordercomplete')}}">Order Complete</a></h3>
 							</div>
 						</div>
 					</div>
@@ -96,10 +96,10 @@
 										<div class="sub">
 											<p><span>Subtotal:</span> <span>${{subtotal}}</span></p>
 											<p><span>Delivery:</span> <span>$0.00</span></p>
-											<p><span>Discount:</span> <span>$45.00</span></p>
+											<p><span>Discount:</span> <span>$0.00</span></p>
 										</div>
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>$450.00</span></p>
+											<p><span><strong>Total:</strong></span> <span>${{subtotal}}</span></p>
 										</div>
 									</div>
 								</div>
