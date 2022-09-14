@@ -2,7 +2,7 @@ import hashlib
 from crypt import methods
 
 from flask import *
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, fresh_login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from models.user import User
@@ -54,21 +54,27 @@ def change_password():
     if request.method == 'POST':
         oldpassword = request.form.get('oldpassword')
         newpassword = request.form.get('newpassword')
+        newpassword1 = request.form.get('newpassword1')
 
         user = User.query.filter(User.id == current_user.id).first()
+        if oldpassword == newpassword:
+            flash('New password should be different from previous password', 'danger')
+            return redirect(url_for('profile.change_p'))
+        if len(newpassword) < 4 or len(newpassword1) < 4:
+            flash('Passwords must be at least 4 characters.', category='danger')
+            return redirect(url_for('profile.change_p'))
+        if newpassword != newpassword1:
+            flash('Your new passwords do not match!', category='danger')
+            return redirect(url_for('profile.change_p'))
         if check_password_hash(user.password, oldpassword):
-            use = User(password=generate_password_hash(newpassword, method='sha256'), username = current_user.username, email = current_user.email)
-            db.session.merge(use)
+            User.password = generate_password_hash(newpassword, method='sha256')
             db.session.commit()
             flash('Password changed successfully.', 'success')
+            return redirect(url_for('auth.logout'))
             return redirect(url_for('auth.login'))
-        elif oldpassword == newpassword:
-            flash('New password should be different from old password', 'danger')
-            return redirect(url_for('profile.change_p'))
         else:
             flash('wrong password', 'danger')
             return redirect(url_for('profile.change_p'))
     else:
         flash('Something went wrong', 'danger')
         return 'Something went wrong'
-
