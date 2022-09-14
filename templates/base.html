@@ -63,39 +63,47 @@
                 <div class="row">
                     <div class="col-sm-12 text-left menu-1">
                         <ul>
+                            {% if current_user.is_authenticated%}
+                            <li class="active"><a href="/">Home</a></li>
+                            <li> <a href="/men">Men Collection</a></li>
+                            <li> <a href="/women">Women Collection</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <div class="float-right">
+                                <li class="has-dropdown">
+                                    <a href="/account/profile">
+                                        <ion-icon name="person-outline"></ion-icon>
+                                        Hi,{{current_user.username}}</a>
+                                    <ul class="dropdown">
+                                        <li><a href="/account/profile">Your profile</a></li>
+                                        <hr>
+                                        <li><a href="product-detail.html">Your orders</a></li>
+                                        <li><a href="/checkout">check out</a></li>
+                                        <li><a href="add-to-wishlist.html">Wishlist</a></li>
+
+                                        <li><a href="/logout">Sign Out</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart[0]</a>
+                            </li>
+                            {% else %}
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/men">Men</a></li>
+                            <li><a href="/women">Women</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <div class="float-lg-right">
+                                <li><a href="/login">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                    <span class="invisible">Log in</span>
+                                </a>
+                                </li>
+                            </div>
+                            {% endif %}
                             {% if current_user.is_authenticated and current_user.usertype_id ==1 %}
                             <li><a href='/add'>Add Items</a></li>
                             <li><a href='/category'>Add Category</a></li>
-                            {% endif %}
-
-                            {% if current_user.is_authenticated%}
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/men">Men</a></li>
-                            <li><a href="/women">Women</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart[{{count}}]</a>
-                            </li>
-
-                            <li class="has-dropdown" class ='active'>
-									<a href="/account/profile">Hello,{{current_user.username}}</a>
-									<ul class="dropdown">
-                                       <li><a href="/account/profile">Your profile</a></li>
-                                    <hr>
-                                    <li> <a href="product-detail.html">Your orders</a></li>
-                                    <li> <a href="/checkout">check out</a></li>
-                                     <li><a href="add-to-wishlist.html">Wishlist</a></li>
-
-                                    <li> <a href="/logout">Sign Out</a></li>
-									</ul>
-								</li>
-                            {% else %}
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/login" , class="btn" , align="right">Login</a></li>
-                            <li><a href="/men">Men</a></li>
-                            <li><a href="/women">Women</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/contact">Contact</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -258,6 +266,9 @@
 <script src="{{url_for('static', filename = 'js/jquery.stellar.min.js') }}"></script>
 <!-- Main -->
 <script src="{{ url_for('static', filename ='js/main.js') }}"></script>
+<!-- ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

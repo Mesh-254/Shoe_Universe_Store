@@ -7244,11 +7244,12 @@ a.text-dark:hover, a.text-dark:focus {
   @page {
     size: a3; }
   body {
-    min-width: 992px !important; }
+    min-width: 992px !important;
+  color: #17a2b8;}
   .container {
     min-width: 992px !important; }
   .navbar {
-    display: none; }
+    display: grid; }
   .badge {
     border: 1px solid #000; }
   .table {
@@ -7288,7 +7289,7 @@ body {
   font-size: 14px;
   line-height: 1.8;
   color: #595959;
-  background: #fff; }
+  background-color:#eff0f5;}
 
 #page {
   position: relative;
@@ -7327,7 +7328,7 @@ a {
   transition: all 0.5s ease; }
   a:hover, a:active, a:focus {
     color: #616161;
-    outline: none;
+    outline: #721c24;
     text-decoration: none; }
 
 p {
@@ -7357,7 +7358,8 @@ h1, h2, h3, h4, h5,
     margin: 0; } }
 
 .colorlib-nav .top-menu {
-  padding: 50px 0 10px 0; }
+  padding: 50px 0 10px 0;
+background-color: #000000;}
   @media (max-width: 767.98px) {
     .colorlib-nav .top-menu {
       padding: 28px 0; } }
@@ -7380,14 +7382,14 @@ h1, h2, h3, h4, h5,
     top: 0;
     right: -5px;
     padding: 0;
-    background: #88c8bc;
+    background: #1b1e21;
     border: 1px solid #88c8bc; }
     .colorlib-nav .top-menu .search-wrap .submit-search i {
       padding: 0; }
 
 .colorlib-nav .sale {
-  padding: 14px 0;
-  background: #000000; }
+  padding: 13px 0;
+  background: darkred; }
   .colorlib-nav .sale h3 {
     margin-bottom: 0;
     font-family: "Montserrat", Arial, sans-serif;
@@ -7426,7 +7428,7 @@ h1, h2, h3, h4, h5,
     display: inline;
     font-weight: 400;
     font-family: "Rokkitt", Georgia, serif;
-    text-transform: uppercase;
+    text-transform: initial;
     font-size: 15px;
     letter-spacing: 2px; }
     .colorlib-nav ul li.cart {
@@ -7434,7 +7436,7 @@ h1, h2, h3, h4, h5,
     .colorlib-nav ul li a {
       position: relative;
       padding: 10px 12px;
-      color: black;
+      color: aliceblue;
       -moz-transition: all 0.5s ease;
       -o-transition: all 0.5s ease;
       -webkit-transition: all 0.5s ease;
@@ -7540,7 +7542,7 @@ h1, h2, h3, h4, h5,
   #colorlib-hero .flexslider {
     border: none;
     z-index: 1;
-    margin-bottom: 0; }
+    margin-bottom: 0;}
     #colorlib-hero .flexslider .slides {
       position: relative;
       overflow: hidden; }
