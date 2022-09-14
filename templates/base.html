@@ -79,7 +79,7 @@
                                         <hr>
                                         <li><a href="product-detail.html">Your orders</a></li>
                                         <li><a href="/checkout">check out</a></li>
-                                        <li><a href="add-to-wishlist.html">Wishlist</a></li>
+                                        <li><a href="/wishlist">Wishlist</a></li>
 
                                         <li><a href="/logout">Sign Out</a></li>
                                     </ul>
@@ -140,7 +140,7 @@
             {% if messages %}
             {% for category, message in messages %}
             <div class="alert alert-{{category}} alert-dismissible fade show"
-                 role="alert">
+                 role="alert" align="center">
                 {{ message }}
                 <button type="button" class="close" data-dismiss="alert"
                         aria-label="Close">

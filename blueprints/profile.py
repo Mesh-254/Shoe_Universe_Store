@@ -78,3 +78,9 @@ def change_password():
     else:
         flash('Something went wrong', 'danger')
         return 'Something went wrong'
+
+
+@profile.route('/wishlist', methods=['GET', 'POST'])
+def wishlist():
+    """ Wish list method """
+    return render_template('add-to-wishlist.html')
