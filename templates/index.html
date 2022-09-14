@@ -4,6 +4,7 @@
 <div class="colorlib-loader"></div>
 
 <div id="page">
+
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
@@ -123,16 +124,14 @@
                                 <h2>
                                     <a href="{{ url_for('category.itemDescription', item_id= data.id) }}">{{data.name}}</a>
                                 </h2>
-                                <span class="price">${{data.price}}</span>
+                                <span class="icon-price-tag"> ${{data.price}}</span>
                             </div>
                             <div class="cart mt-4 align-items-left">
                                 {% if current_user.is_authenticated%}
                                 <button class="btn btn-outline-secondary mr-2 px-4 align-content-lg-start">
-
                                     <a href="{{url_for('cart.addToCart', item_id=data.id, user_id=current_user.id) }}">
                                         Add to cart
                                     </a>
-
                                 </button>
                                 {% endif %}
                                 {% if current_user.is_authenticated and current_user.usertype_id ==1 %}
@@ -148,7 +147,6 @@
                                 <i class="fa fa-heart text-muted"></i>
                                 <i class="fa fa-share-alt text-muted"></i>
                             </div>
-
                         </div>
 
                     </div>

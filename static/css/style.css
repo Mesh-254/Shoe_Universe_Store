@@ -7410,7 +7410,7 @@ background-color: #000000;}
       margin-bottom: 10px; } }
   .colorlib-nav #colorlib-logo a {
     position: relative;
-    color: #595959; }
+    color: navajowhite; }
 
 .colorlib-nav .menu-1 {
   display: block; }
@@ -7518,9 +7518,9 @@ background-color: #000000;}
         -ms-border-radius: 100px;
         border-radius: 100px; }
       .colorlib-nav ul li.btn-cta a:hover span {
-        -webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75); }
+        -webkit-box-shadow: 0px 14px 20px -9px rgba(245,245,245, 0.75);
+        -moz-box-shadow: 0px 14px 20px -9px rgba(245, 245, 245, 0.75);
+        box-shadow: 0px 14px 20px -9px rgba(245, 245, 245, 0.75); }
     .colorlib-nav ul li.active > a {
       color: #88c8bc !important;
       position: relative; }
@@ -7530,11 +7530,11 @@ background-color: #000000;}
         transform: translate3d(0, 0, 0); }
 
 #colorlib-hero {
-  height: 600px;
+  height: 300px;
   background: #fff url(../images/loader.gif) no-repeat center center;
   width: 100%;
   float: left;
-  z-index: 0; }
+  z-index: 0;}
   #colorlib-hero .btn {
     font-size: 24px; }
     #colorlib-hero .btn.btn-primary {

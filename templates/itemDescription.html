@@ -48,24 +48,33 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="images p-3">
-                            <div class="text-center p-4">  </div>
+                            <div class="text-center p-4"></div>
                             <div class="thumbnail text-center">
-                                <img src={{url_for('static' , filename='images/' + itemData.image )}} class="img-fluid" alt="IMAGE"> </div>
+                                <img src={{url_for('static' , filename='images/' + itemData.image )}} class="img-fluid"
+                                     alt="IMAGE"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product p-4">
-                            <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand" ><b>World's Best Footwear</b></span>
+                            <div class="mt-4 mb-3"><span class="text-uppercase text-muted brand"><b>World's Best Footwear</b></span>
                                 <div class="mt-4 mb-3">
                                     <span class="text-uppercase text-muted brand">
                                     <h5 class="text-uppercase">{{itemData.name}}</h5>
                                 </span>
-                                    </div>
+                                </div>
 
                             </div>
-                            <p class="about">Shop from a wide range of footwear from World's best Footwear online store. Perfect for your everyday use, you could choose your most satisfying footwear to complete your look.</p>
+                            <p class="about">Shop from a wide range of footwear from World's best Footwear online store.
+                                Perfect for your everyday use, you could choose your most satisfying footwear to
+                                complete your look.</p>
+                           <b><p class="text-info" >Price: ${{itemData.price}}</p></b>
 
-                            <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                            <a href="{{url_for('cart.addToCart', item_id=itemData.id, user_id=current_user.id) }}">
+                                <div class="cart mt-4 align-items-center">
+                                    <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button>
+                                    <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

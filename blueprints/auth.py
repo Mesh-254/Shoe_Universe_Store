@@ -1,6 +1,6 @@
 import mail
 from flask import *
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from random_password import random_password
 
 from models.user import User
@@ -87,11 +87,14 @@ def reset_password():
 def reset_password_post():
     email = request.form.get('email')
     user = User.query.filter_by(email=email).first()
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     if not user:
         flash('User email does not exist', 'danger')
         return redirect(url_for('auth.reset_password'))
+    else:
+        send_password_reset_email(user)
     token = random_password()
-    user.reset_password = 1
     user.password = generate_password_hash(token, method='sha256')
     db.session.commit()
 

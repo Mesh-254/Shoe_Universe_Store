@@ -1,6 +1,7 @@
 from flask import *
 from flask.cli import load_dotenv
 from werkzeug.utils import secure_filename
+from flask_mail import Mail
 import os
 
 from blueprints.auth import auth
@@ -45,6 +46,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.app = app
 db.init_app(app)
+mail = Mail(app)
 
 migrate = Migrate(app, db)
 

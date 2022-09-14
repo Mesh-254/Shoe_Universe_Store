@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
-                    <h2>{{categoryName.name}} Products</h2>
+                    <h2>{{categoryName.name}} Products </h2>
                 </div>
             </div>
             <div class="display">
@@ -26,15 +26,39 @@
                     {% for data in items %}
                     <div class="col-lg-3 mb-4 text-center">
                         <div class="product-entry border">
-                            <a href="/static/images/?image={{data.image}}" class="prod-img">
+                            <a href="{{ url_for('category.itemDescription', item_id= data.id) }}" class="prod-img">
                                 <img src={{url_for('static' , filename='images/' + data.image)}}
                                      class="img-fluid" alt="IMAGE">
                             </a>
                             <div class="desc">
-                                <h2><a href="#">{{data.name}}</a></h2>
+                                <h2><a href="{{ url_for('category.itemDescription', item_id= data.id) }}">{{data.name}}</a></h2>
                                 <span class="price">${{data.price}}</span>
                             </div>
-                        </div>
+
+                    <div class="cart mt-4 align-items-left">
+                        {% if current_user.is_authenticated%}
+                        <button class="btn btn-outline-secondary mr-2 px-4 align-content-lg-start">
+
+                            <a href="{{url_for('cart.addToCart', item_id=data.id, user_id=current_user.id) }}">
+                                Add to cart
+                            </a>
+
+                        </button>
+                        {% endif %}
+                        {% if current_user.is_authenticated and current_user.usertype_id ==1 %}
+
+                        <button class="btn btn-btn-primary btn-outline-danger  mr-2 px-4 align-content-lg-end">
+
+                            <a href="{{url_for('removeItem', item_id = data.id)}}">
+                                Delete
+                            </a>
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
+                        {% endif %}
+                        <i class="fa fa-heart text-muted"></i>
+                        <i class="fa fa-share-alt text-muted"></i>
+                    </div>
+                            </div>
                     </div>
                     {% endfor %}
                 </div>
