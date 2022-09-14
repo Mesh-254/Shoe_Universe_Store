@@ -15,15 +15,15 @@ run flask app
 - users can register, update their profile and change their passwords
 - admin can create new categories, add products as well as delete them
 
-#### Technologies Used 
+## Technologies Used 
 
-## Front End
+### Front End
 - Javascript- JQuery
 - Bootstrap
 - HTML 
 - CSS
 
-## Back End
+### Back End
 - MYSQL 
 - SQLAlchemy 
 - Flask
