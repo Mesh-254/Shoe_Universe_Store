@@ -1,4 +1,4 @@
-import mail
+import smtplib
 from flask import *
 from flask_login import login_user, logout_user, current_user
 from random_password import random_password
@@ -63,7 +63,7 @@ def signup_post():
     userName = User.query.filter_by(username=username).first()
     new_user = User(username=username, email=email, password=generate_password_hash(password, method='sha256'))
     if user or userName:
-        flash('You are already registered', 'danger')
+        flash('You are already registered!', 'danger')
         return redirect(url_for('auth.login'))
     else:
         db.session.add(new_user)
@@ -92,16 +92,18 @@ def reset_password_post():
     if not user:
         flash('User email does not exist', 'danger')
         return redirect(url_for('auth.reset_password'))
-    else:
-        send_password_reset_email(user)
     token = random_password()
     user.password = generate_password_hash(token, method='sha256')
     db.session.commit()
 
     msg = Message('Password Reset Request',
-                  sender='info@shoe_store.com',
-                  recipients=[user.email])
+                  sender='meshack3197@gmail.com',
+                  recipients='meshack3197@gmail.com')
     msg.body = f'To reset your password, Use this temporary token: {token}'
-    mail.send(msg)
-    flash('An email has been sent with instructions to reset your password', 'success')
+    try:
+        smtpObj = smtplib.SMTP('localhost')
+        smtpObj.sendmail(msg)
+        flash('An email has been sent with instructions to reset your password', 'success')
+    except smtplib.SMTPException:
+        flash("Error: unable to send email", 'danger')
     return redirect(url_for('auth.login'))
