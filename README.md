@@ -29,5 +29,5 @@ run flask app
 - Python 
 - Javascript- JQuery
 ### Authors
-- **Meshack Mutune**
+**Meshack Mutune**
 ## licensed under the MIT 
