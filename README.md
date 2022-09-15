@@ -29,7 +29,7 @@ run flask app
 - Flask
 - Python 
 - Javascript- JQuery
-- 
+
 ### Authors
 Meshack Mutune <a href="mesh-254">Github </a>
 
