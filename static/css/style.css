@@ -8613,9 +8613,9 @@ input[type="text"] {
       transition: all .2s ease-out; }
   .colorlib-nav-toggle.colorlib-nav-white > i {
     color: #fff;
-    background: #000; }
+    background: #FFFFFF; }
     .colorlib-nav-toggle.colorlib-nav-white > i::before, .colorlib-nav-toggle.colorlib-nav-white > i::after {
-      background: #000; }
+      background: #FFFFFF; }
 
 .colorlib-nav-toggle i::before {
   top: -7px; }
