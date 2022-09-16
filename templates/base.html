@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
 
@@ -65,8 +69,8 @@
                         <ul>
                             {% if current_user.is_authenticated%}
                             <li class="active"><a href="/">Home</a></li>
-                            <li> <a href="/men">Men Collection</a></li>
-                            <li> <a href="/women">Women Collection</a></li>
+                            <li><a href="/men">Men Collection</a></li>
+                            <li><a href="/women">Women Collection</a></li>
                             <li><a href="/about">About</a></li>
                             <li><a href="/contact">Contact</a></li>
                             <div class="float-right">
@@ -95,7 +99,8 @@
                             <li><a href="/contact">Contact</a></li>
                             <div class="float-lg-right">
                                 <li><a href="/login">
-                                    <ion-icon name="person-outline"></ion-icon><span class="btn">Log in</span>
+                                    <ion-icon name="person-outline"></ion-icon>
+                                    <span class="btn">Log in</span>
                                 </a>
                                 </li>
                             </div>
