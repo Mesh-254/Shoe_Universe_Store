@@ -9,6 +9,10 @@ Clone the repository In your terminal window, navigate into the project
 Run pip3 install -r requirements.txt to make sure all of the necessary Python packages (Flask, SQLAlchemy and others) are installed Create a .env file in the root of the directory to setup database and secret_key
 run flask db migrate --upgrade to update tables in your database
 run flask app
+### Application URL
+
+<p><a href="http://141.95.42.125:83/">World's Finest Shoe store </a></p>
+
 
 ### Usage
 - Users can view products, add and remove products from the cart
