@@ -35,6 +35,6 @@ run flask app
 - Javascript- JQuery
 
 ### Authors
-Meshack Mutune <a href="mesh-254">Github </a>
+Meshack Mutune <a href="https://github.com/Mesh-254/Shoe_Universe_Store">Github </a>
 
 ## licensed under the MIT 
