@@ -68,13 +68,14 @@
                                 Perfect for your everyday use, you could choose your most satisfying footwear to
                                 complete your look.</p>
                            <b><p class="text-info" >Price: ${{itemData.price}}</p></b>
-
+                                {% if current_user.is_authenticated%}
                             <a href="{{url_for('cart.addToCart', item_id=itemData.id, user_id=current_user.id) }}">
                                 <div class="cart mt-4 align-items-center">
                                     <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button>
                                     <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
