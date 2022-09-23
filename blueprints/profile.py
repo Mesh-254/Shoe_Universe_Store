@@ -70,7 +70,6 @@ def change_password():
             User.password = generate_password_hash(newpassword, method='sha256')
             db.session.commit()
             flash('Password changed successfully.', 'success')
-            return redirect(url_for('auth.logout'))
             return redirect(url_for('auth.login'))
         else:
             flash('wrong password', 'danger')
