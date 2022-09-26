@@ -67,10 +67,10 @@ def change_password():
             flash('Your new passwords do not match!', category='danger')
             return redirect(url_for('profile.change_p'))
         if check_password_hash(user.password, oldpassword):
-            User.password = generate_password_hash(newpassword, method='sha256')
+            user.password = generate_password_hash(newpassword, method='sha256')
             db.session.commit()
             flash('Password changed successfully.', 'success')
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('auth.logout'))
         else:
             flash('wrong password', 'danger')
             return redirect(url_for('profile.change_p'))
